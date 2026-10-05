@@ -1,0 +1,11 @@
+/* Shared, independently testable game rules. */
+(function(root){
+const catalog=[{id:'bow',name:'Lazo rosa',icon:'🎀',price:80,type:'accessory'},{id:'hat',name:'Sombrero',icon:'🎩',price:120,type:'accessory'},{id:'crown',name:'Corona',icon:'👑',price:220,type:'accessory'},{id:'house',name:'Casita',icon:'🏠',price:150,type:'world'},{id:'tree',name:'Árbol',icon:'🌳',price:60,type:'world'},{id:'flowers',name:'Flores',icon:'🌻',price:45,type:'world'},{id:'pool',name:'Piscina',icon:'🏊',price:200,type:'world'},{id:'slide',name:'Tobogán',icon:'🛝',price:180,type:'world'}];
+function fresh(){return {version:1,coins:250,xp:0,selected:0,pets:['Toby','Luna','Coco','Pío'].map(name=>({name,food:80,fun:80,clean:80,love:80,accessory:null})),owned:[],world:Array(16).fill(null),last:Date.now(),daily:null,sound:true};}
+function normalize(s){if(!s||s.version!==1||!Array.isArray(s.pets)||s.pets.length!==4||!Array.isArray(s.world)||s.world.length!==16)return fresh();s.coins=Math.max(0,Number(s.coins)||0);s.xp=Math.max(0,Number(s.xp)||0);s.selected=Math.max(0,Math.min(3,Number(s.selected)||0));s.owned=Array.isArray(s.owned)?s.owned.filter(id=>catalog.some(i=>i.id===id)):[];s.pets=s.pets.map((v,i)=>({...fresh().pets[i],...v,...Object.fromEntries(['food','fun','clean','love'].map(k=>[k,Math.max(0,Math.min(100,Number(v[k])||0))]))}));return s;}
+function age(s,now=Date.now()){const minutes=Math.max(0,Math.min(1440,(now-s.last)/60000));s.pets.forEach(p=>['food','fun','clean','love'].forEach(k=>p[k]=Math.max(15,p[k]-minutes*.06)));s.last=now;return s;}
+function care(s,key){const p=s.pets[s.selected];if(!['food','fun','clean','love'].includes(key))return false;if(p[key]>=99)return false;if(key==='food'&&s.coins<5)return false;if(key==='food')s.coins-=5;p[key]=Math.min(100,p[key]+25);s.xp+=5;return true;}
+function buy(s,id){const item=catalog.find(i=>i.id===id);if(!item||s.owned.includes(id)||s.coins<item.price)return false;s.coins-=item.price;s.owned.push(id);return true;}
+function reward(s,coins){s.coins+=Math.max(0,Math.min(100,Math.floor(coins)));s.xp+=20;s.pets[s.selected].fun=Math.min(100,s.pets[s.selected].fun+20);}
+const api={fresh,normalize,age,care,buy,reward,catalog};if(typeof module!=='undefined')module.exports=api;else root.Rules=api;
+})(globalThis);
