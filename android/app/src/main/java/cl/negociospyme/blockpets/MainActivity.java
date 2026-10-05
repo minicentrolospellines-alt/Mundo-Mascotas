@@ -15,6 +15,7 @@ import android.view.View;
 
 public class MainActivity extends Activity {
     private WebView web;
+    private PetAds ads;
     private boolean pageReady;
     private int pendingPet = -1;
     @Override public void onCreate(Bundle saved) {
@@ -32,11 +33,15 @@ public class MainActivity extends Activity {
         web.getSettings().setAllowUniversalAccessFromFileURLs(false);
         // Only the bundled, trusted HTML is loaded. External navigation is blocked.
         web.addJavascriptInterface(new PetBridge(), "PetNative");
+        ads = new PetAds(this, status -> { if(web!=null && pageReady) web.evaluateJavascript("window.onPetAdEvent && window.onPetAdEvent(" + org.json.JSONObject.quote(status) + ")", null); });
+        web.addJavascriptInterface(new AdsBridge(), "PetAdNative");
         web.setWebViewClient(new WebViewClient() {
             @Override public boolean shouldOverrideUrlLoading(WebView view, String url) { return true; }
             @Override public void onPageFinished(WebView view, String url) {
                 pageReady = true;
                 openPet();
+                web.evaluateJavascript("if(typeof collectAdRewards==='function')collectAdRewards()", null);
+                ads.start();
             }
         });
         web.loadUrl("file:///android_asset/index.html");
@@ -54,6 +59,13 @@ public class MainActivity extends Activity {
     @Override protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent); setIntent(intent);
         pendingPet = intent.getIntExtra("petIndex", -1); openPet();
+    }
+    public final class AdsBridge {
+        @JavascriptInterface public String status() { return ads.status(); }
+        @JavascriptInterface public void show() { runOnUiThread(() -> ads.show()); }
+        @JavascriptInterface public String receipts() { return ads.receipts(); }
+        @JavascriptInterface public void acknowledge(String id) { ads.acknowledge(id); }
+        @JavascriptInterface public void privacy() { runOnUiThread(() -> ads.privacy()); }
     }
     public final class PetBridge {
         @JavascriptInterface public void sync(String snapshot) { PetNotifications.snapshot(MainActivity.this, snapshot); }
@@ -95,9 +107,11 @@ public class MainActivity extends Activity {
         super.onResume(); PetNotifications.foreground = true;
         if (web != null) web.onResume();
         PetNotifications.schedule(this); notifyStatus();
+        if(web!=null && pageReady) web.evaluateJavascript("if(typeof collectAdRewards==='function')collectAdRewards()",null);
     }
     @Override protected void onDestroy() {
-        if (web != null) { web.removeJavascriptInterface("PetNative"); web.destroy(); web = null; }
+        if(ads!=null)ads.dispose();
+        if (web != null) { web.removeJavascriptInterface("PetAdNative"); web.removeJavascriptInterface("PetNative"); web.destroy(); web = null; }
         super.onDestroy();
     }
 }
