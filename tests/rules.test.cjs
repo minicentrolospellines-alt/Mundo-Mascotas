@@ -12,3 +12,6 @@ s=R.fresh();s.last=now;R.sleep(s,now);R.sleep(s,now+20000);R.age(s,now+40000);as
 // Pelota y minijuegos incrementan los objetivos sin excederlos.
 s=R.fresh();for(let i=0;i<9;i++)assert.equal(R.toy(s,now),true);assert.equal(s.missions.progress.toy,5);assert.equal(s.coins,250);R.reward(s,10);assert.equal(s.missions.progress.game,1);R.reward(s,10);assert.equal(s.missions.progress.game,2);
 console.log('Migration, daily missions, reward safety, sleeping and toys passed');
+
+// Only fixed, validated ad rewards are credited, once per durable receipt.
+s=R.fresh();assert.equal(R.applyAdReward(s,'receipt-test-001',30),30);assert.equal(s.coins,280);assert.equal(R.applyAdReward(s,'receipt-test-001',30),0);s=R.normalize(JSON.parse(JSON.stringify(s)));assert.equal(R.applyAdReward(s,'receipt-test-001',30),0);assert.equal(R.applyAdReward(s,'receipt-test-002',999),0);assert.equal(R.applyAdReward(s,'short',30),0);assert.equal(s.coins,280);assert.equal(R.applyAdReward(s,'receipt-test-002',30),30);assert.equal(s.coins,310);console.log('Ad reward receipt validation and deduplication passed');
