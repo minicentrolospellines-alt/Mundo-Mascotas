@@ -1,0 +1,8 @@
+plugins { id 'com.android.application' }
+android {
+ namespace 'cl.negociospyme.blockpets'
+ compileSdk 35
+ defaultConfig { applicationId 'cl.negociospyme.blockpets'; minSdk 23; targetSdk 35; versionCode 1; versionName '1.0' }
+ sourceSets { main { assets.srcDirs = ['../../web'] } }
+ buildTypes { release { minifyEnabled false } }
+}
