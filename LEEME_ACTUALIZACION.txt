@@ -1,0 +1,78 @@
+MUNDO MASCOTAS v1.4 — OJOS CERRADOS Y NOTIFICACIONES
+Actualización sobre v1.3. Solo archivos nuevos o modificados.
+
+NOVEDADES
+- Las cuatro mascotas cierran los ojos y tienen una expresión tranquila al dormir.
+- Al despertar vuelven a la ilustración original.
+- Sus retratos muestran Zzz mientras descansan.
+- Mensaje de energía completa cuando terminan de recuperarse.
+- Avisos locales Android de comida, limpieza, cariño, juego y descanso.
+- Un aviso abre directamente la mascota que necesita atención.
+- Activar/desactivar, prueba inmediata y acceso a permisos desde Ajustes.
+
+SUBIDA A GITHUB
+Descomprime este ZIP primero. No borres las imágenes anteriores.
+En cada carpeta de GitHub usa Add file > Upload files y luego Commit changes.
+
+1. En web: reemplaza app.js y style.css.
+2. En web/assets: agrega dog-sleep.png, cat-sleep.png, hamster-sleep.png y chick-sleep.png.
+3. En android/app: reemplaza build.gradle.
+4. En android/app/src/main: reemplaza AndroidManifest.xml.
+5. En android/app/src/main/java/cl/negociospyme/blockpets:
+   reemplaza MainActivity.java y agrega PetNotifications.java y PetReminderService.java.
+6. En android/app/src/main/res/drawable: agrega ic_pet_notification.xml.
+
+Las rutas del ZIP son las rutas finales: no pongas los archivos Android en web.
+Esta vez es necesario subir los archivos Android y generar un NUEVO APK;
+reemplazar solo las imágenes no agrega las notificaciones al APK anterior.
+Cuando termines todas las subidas, espera la ejecución verde del último cambio
+en Actions. Las ejecuciones intermedias pueden fallar si aún faltan archivos nuevos.
+Instala la actualización sobre la app existente con la misma firma para conservar datos.
+No desinstales ni borres los datos de la app si quieres conservar tu partida.
+
+ACTIVAR Y PROBAR AVISOS
+1. Abre el APK nuevo y toca el engranaje superior (Ajustes).
+2. Baja hasta Avisos de tus mascotas.
+3. Toca Activar avisos. Acepta el permiso de Android si aparece.
+4. Toca Probar notificación y revisa la bandeja de notificaciones del teléfono.
+5. Toca el aviso: debe abrir la mascota en su habitación.
+6. Si Android los bloquea, usa Permisos en Android en esa misma pantalla.
+
+COMPORTAMIENTO
+- Se avisa cuando una necesidad está al 30 % o menos.
+- Revisión periódica aproximada cada 15 minutos, incluso con la app cerrada.
+- Solo entre 09:00 y 21:00 según la hora del teléfono.
+- Máximo un aviso de cuidado cada 6 horas, agrupado en una única notificación.
+- No se envían avisos de cuidado mientras la app está en primer plano.
+- La prueba manual es inmediata y no consume el intervalo de los avisos reales.
+- Dormir no genera avisos de falta de energía o de juego, pero puede requerir
+  despertar a la mascota para alimentarla, bañarla o darle cariño.
+- No necesita internet ni cuentas. Los datos permanecen en el dispositivo.
+- Android decide el momento de ejecución; ahorro de batería o restricciones del
+  fabricante pueden retrasarlo. Tras Forzar detención, vuelve a abrir la app.
+- La versión web por sí sola no envía notificaciones con la app cerrada.
+
+VALIDACIÓN
+Reglas del juego y conservación de la partida: pruebas automáticas aprobadas.
+Navegador móvil: cuatro imágenes dormidas, despertar, Zzz, persistencia,
+configuración de avisos y apertura de mascota por aviso verificadas.
+La interfaz nativa se simuló en esas pruebas de navegador.
+Sintaxis Java y XML Android revisados. El APK no se compiló en este entorno;
+la entrega de notificaciones y permisos deben probarse en un teléfono Android.
+
+DETALLES PARA EL PROYECTO
+Versión Android: versionCode 2, versionName 1.4.
+Conserva applicationId cl.negociospyme.blockpets y la clave blockpets-v1.
+No se añadieron dependencias externas. Se usa JobScheduler del sistema.
+Los permisos nuevos son POST_NOTIFICATIONS y RECEIVE_BOOT_COMPLETED,
+este último para conservar el trabajo programado después de reiniciar.
+
+REFERENCIAS ANDROID
+https://developer.android.com/reference/android/app/job/JobInfo.Builder
+https://developer.android.com/develop/ui/views/notifications/notification-permission
+
+IDEAS PARA UNA SIGUIENTE ENTREGA (NO INCLUIDAS)
+- Camas y pijamas comprables con monedas.
+- Sonidos diferentes para cada mascota.
+- Más muebles y decoraciones para la habitación.
+- Álbum de logros y nuevos animales desbloqueables.

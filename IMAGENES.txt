@@ -1,0 +1,21 @@
+Las cuatro imágenes fueron editadas con la herramienta integrada de generación
+y edición de imágenes. Se mantuvieron los originales despiertos.
+Archivos finales del proyecto:
+web/assets/dog-sleep.png
+web/assets/cat-sleep.png
+web/assets/hamster-sleep.png
+web/assets/chick-sleep.png
+
+Prompts utilizados (cada uno con su imagen original como referencia):
+
+DOG
+Edit this exact game pet sprite. Create its sleeping state: both eyes fully closed, gently curved relaxed eyelids with matching golden fluffy fur where the open eyes were; mouth closed into a small peaceful smile, no tongue showing. Preserve exactly this puppy's identity, tilted head, seated pose, silhouette, fur colors, red collar and gold bone charm, camera angle, soft polished 3D lighting. Single whole body pet cutout, transparent background, no props, no text. This is a replacement sprite in a game so match original composition and proportions closely.
+
+CAT
+Edit this exact game pet sprite into its sleeping state. Both eyes fully closed, curved relaxed eyelids with matching gray fluffy fur replacing the open eyes. Mouth closed into a small peaceful smile, no tongue. Preserve this kitten identity, tilted head, seated pose, silhouette, gray and white fur markings, pink collar heart pendant, camera angle and soft polished 3D lighting. Whole body single pet transparent background no props no text. Match original composition and proportions closely for replacement game sprite.
+
+HAMSTER
+Edit this exact game pet sprite into its sleeping state. Both eyes fully closed with gently curved relaxed eyelids, replacing open eyes with matching golden fluffy fur. Mouth closed into a small peaceful smile, no tongue. Preserve exact hamster identity, seated pose, ears, tiny paws, silhouette, orange and cream white fur markings, camera angle and soft polished 3D lighting. Whole body single pet transparent background no props no text. Match original composition and proportions closely for replacement game sprite.
+
+CHICK
+Edit this exact game pet sprite into its sleeping state. Both eyes fully closed with gently curved relaxed eyelids, replacing open eyes with matching yellow fluffy feathers. Orange beak gently closed, no open mouth or tongue. Preserve exact chick identity, seated pose, head tilt, wings, feather crest, tiny orange feet, silhouette, yellow fluffy texture, camera angle and soft polished 3D lighting. Whole body single pet transparent background no props no text. Match original composition and proportions closely for replacement game sprite.
