@@ -2,7 +2,7 @@ plugins { id 'com.android.application' }
 android {
  namespace 'cl.negociospyme.blockpets'
  compileSdk 35
- defaultConfig { applicationId 'cl.negociospyme.blockpets'; minSdk 24; targetSdk 35; versionCode 3; versionName '1.5' }
+ defaultConfig { applicationId 'cl.negociospyme.blockpets'; minSdk 24; targetSdk 35; versionCode 4; versionName '1.6' }
  sourceSets { main { assets.srcDirs = ['../../web'] } }
  buildTypes { release { minifyEnabled false } }
 }
