@@ -1,0 +1,8 @@
+<resources>
+    <!-- Mundo Mascotas production AdMob IDs. Do not click your own live ads. -->
+    <bool name="ads_test_mode">false</bool>
+    <string name="admob_app_id" translatable="false">ca-app-pub-6312173292390227~2377895018</string>
+    <string name="admob_rewarded_id" translatable="false">ca-app-pub-6312173292390227/4165619406</string>
+    <string name="admob_banner_id" translatable="false">ca-app-pub-6312173292390227/9641132355</string>
+    <string name="admob_interstitial_id" translatable="false">ca-app-pub-6312173292390227/7055506623</string>
+</resources>
