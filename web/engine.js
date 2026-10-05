@@ -33,5 +33,11 @@ function sleep(s,now=Date.now()){age(s,now);const p=s.pets[s.selected];p.sleepin
 function toy(s,now=Date.now()){age(s,now);const p=s.pets[s.selected];if(p.sleeping)return false;p.fun=Math.min(100,p.fun+5);p.energy=Math.max(0,p.energy-1);progress(s,'toy',1,now);return true;}
 function buy(s,id){const item=catalog.find(i=>i.id===id);if(!item||s.owned.includes(id)||s.coins<item.price)return false;s.coins-=item.price;s.owned.push(id);return true;}
 function reward(s,coins){s.coins+=Math.max(0,Math.min(100,Math.floor(coins)));s.xp+=20;s.pets[s.selected].fun=Math.min(100,s.pets[s.selected].fun+20);s.pets[s.selected].energy=Math.max(0,s.pets[s.selected].energy-5);progress(s,'game');}
-const api={fresh,normalize,age,care,buy,reward,catalog,missions,dayKey,dailyMissions,progress,claim,ready,sleep,toy};if(typeof module!=='undefined')module.exports=api;else root.Rules=api;
+function applyAdReward(s,id,coins){
+ if(typeof id!=='string'||id.length<8||id.length>100||coins!==30)return 0;
+ if(!Array.isArray(s.adReceipts))s.adReceipts=[];
+ if(s.adReceipts.includes(id))return 0;
+ s.coins+=30;s.adReceipts.push(id);s.adReceipts=s.adReceipts.slice(-256);return 30;
+}
+const api={applyAdReward,fresh,normalize,age,care,buy,reward,catalog,missions,dayKey,dailyMissions,progress,claim,ready,sleep,toy};if(typeof module!=='undefined')module.exports=api;else root.Rules=api;
 })(globalThis);
