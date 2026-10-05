@@ -1,0 +1,6 @@
+<resources>
+    <!-- Official Google demo IDs. No revenue is earned in this configuration. -->
+    <bool name="ads_test_mode">true</bool>
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_rewarded_id" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+</resources>
