@@ -127,3 +127,21 @@ body{background:radial-gradient(ellipse at top,#386e62,#153a36)}#app{background:
 #app[data-screen="world"] .world-tip,#app[data-screen="world"] .world-status,#app[data-screen="world"] .world-viewbar,#app[data-screen="world"] .world-stats{margin-left:14px;margin-right:14px}
 @keyframes worldCritterBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @media(max-width:360px){#app[data-screen="world"] .world-viewport{height:360px}#app[data-screen="world"] .world-buildtools{grid-template-columns:1fr 1fr}}
+
+
+/* v2.4: mapa vertical + niveles antes de energía + premio anuncio visible */
+#app[data-screen="world"] .world-viewport{height:clamp(430px,62dvh,590px);margin:0 14px 12px}
+#app[data-screen="world"] .world-map{width:680px;height:820px}
+#app[data-screen="world"] .village-base{width:680px;height:820px}
+#app[data-screen="world"] .world-grid-wrap{left:52px;top:136px;width:576px;height:576px}
+#app[data-screen="world"] .invisible-world-grid{grid-template-columns:repeat(8,68px);grid-auto-rows:68px;gap:4px}
+#app[data-screen="world"] .invisible-world-grid .tile{height:68px}
+#app[data-screen="world"] .world-critter{width:58px;height:58px}
+#app[data-screen="world"] .world-critter img{width:52px;height:52px}
+#app[data-screen="home"]>.stats{margin:12px 15px 0;padding:0;gap:10px}
+#app[data-screen="home"]>.stats .stat{padding:12px 12px 10px;border:2px solid #ecd0a3;border-radius:17px;background:linear-gradient(#fffaf0,#ffefd2);box-shadow:0 3px #c69a6040}
+#app[data-screen="home"]>.stats .stat progress{margin-top:7px}
+#app[data-screen="home"]>.pet-extras{margin-top:12px}
+.coin-reward-pop{animation:coinRewardPop .65s ease-out}
+@keyframes coinRewardPop{0%{transform:scale(1)}35%{transform:scale(1.2) rotate(-2deg);box-shadow:0 0 0 7px #ffd75b55,0 3px 0 #e3cda7}100%{transform:scale(1)}}
+@media(max-width:360px){#app[data-screen="world"] .world-viewport{height:430px}}
