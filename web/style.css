@@ -97,18 +97,13 @@ body{background:radial-gradient(ellipse at top,#386e62,#153a36)}#app{background:
 #app[data-screen="world"] .world-footer{margin:8px 14px 116px}
 @media(max-width:360px){#app[data-screen="world"] .world-viewport{height:420px}#app[data-screen="world"] .world-buildtools{grid-template-columns:1fr 1fr}}
 
-/* ===== Mundo Mascotas 2.2 · Villa 3D ===== */
-#app[data-screen="world"]{background:linear-gradient(180deg,#f4dba9 0,#f7e8c6 46%,#f4d99f 100%)}
-#app[data-screen="world"] .heading{padding-bottom:12px}
-#app[data-screen="world"] .world-3d-tip{margin:0 14px 10px;padding:10px 12px;border-radius:16px;background:linear-gradient(180deg,#fff8e9,#ffedc8);border:2px solid #e3bd7a;color:#77502d;box-shadow:0 4px 0 #b77b3a2b}
-#app[data-screen="world"] .world-status{margin:0 14px 10px}
-#app[data-screen="world"] .world-viewbar{margin:0 14px 10px}
-#app[data-screen="world"] .world-3d-frame{position:relative;height:455px;margin:0 12px 12px;border-radius:28px;overflow:hidden;border:4px solid #9b6437;background:#83cef0;box-shadow:0 9px 0 #714522,0 18px 26px #4a2b1838,inset 0 0 0 2px #f2c985}
-#app[data-screen="world"] #world3d{display:block;width:100%;height:100%;border-radius:23px;background:#8fd4f3;touch-action:none;user-select:none;-webkit-user-select:none}
-#app[data-screen="world"] .world-3d-badge{position:absolute;right:11px;top:11px;padding:6px 9px;border-radius:11px;background:linear-gradient(180deg,#fff8d0,#ffcb55);border:2px solid #d99a2f;box-shadow:0 3px 0 #9b6424;color:#714719;font-weight:1000;font-size:12px;letter-spacing:.6px;pointer-events:none}
-#app[data-screen="world"] .world-pan-hint{margin:0 14px 12px;padding:9px 12px;font-size:12px;line-height:1.35}
-#app[data-screen="world"] .world-stats{margin:0 14px 12px}
-#app[data-screen="world"] .world-buildtools{grid-template-columns:repeat(2,minmax(0,1fr));padding:3px 14px 8px}
-#app[data-screen="world"] .world-footer{margin:8px 14px 116px}
-#app[data-screen="world"] .world-zoom-controls button:active{transform:translateY(2px);box-shadow:0 1px 0 #b98745}
-@media(max-width:360px){#app[data-screen="world"] .world-3d-frame{height:420px}#app[data-screen="world"] .world-buildtools{grid-template-columns:1fr 1fr}}
+
+/* v2.2: mascotas caminando y mundo más limpio */
+#app[data-screen="world"] .world-map.village-map{box-shadow:inset 0 0 55px #4b7c2a44}
+#app[data-screen="world"] .world-critters{position:absolute;inset:0;z-index:9;pointer-events:none}
+#app[data-screen="world"] .world-critter{position:absolute;left:0;top:0;width:46px;height:46px;transform:translate(0,0);will-change:transform}
+#app[data-screen="world"] .world-critter img{width:42px;height:42px;display:block;object-fit:contain;filter:drop-shadow(0 4px 3px #00000022);animation:worldCritterBounce .9s ease-in-out infinite}
+#app[data-screen="world"] .world-critter:nth-child(2n) img{animation-delay:.18s}
+#app[data-screen="world"] .world-critter:nth-child(3n) img{animation-delay:.36s}
+#app[data-screen="world"] .world-critter-shadow{position:absolute;left:9px;right:9px;bottom:2px;height:10px;border-radius:50%;background:radial-gradient(ellipse at center,#00000033,transparent 72%)}
+@keyframes worldCritterBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
