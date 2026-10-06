@@ -98,12 +98,32 @@ body{background:radial-gradient(ellipse at top,#386e62,#153a36)}#app{background:
 @media(max-width:360px){#app[data-screen="world"] .world-viewport{height:420px}#app[data-screen="world"] .world-buildtools{grid-template-columns:1fr 1fr}}
 
 
-/* v2.2: mascotas caminando y mundo más limpio */
-#app[data-screen="world"] .world-map.village-map{box-shadow:inset 0 0 55px #4b7c2a44}
+/* v2.3 mejoras mundo 3D y limpieza visual */
+#app[data-screen="world"]{background:linear-gradient(#e0f3c4 0,#f5e5be 38%,#f8e6be 100%)}
+#app[data-screen="world"] .world-viewport{height:392px;margin:0 14px 12px;border-radius:28px;background:#8ccf59;box-shadow:inset 0 0 0 3px #f0cf94,0 9px 0 #76492b,0 15px 24px #4a2b1830}
+#app[data-screen="world"] .world-map{width:820px;height:640px;background:linear-gradient(#9ada67,#80c24a);box-shadow:none}
+#app[data-screen="world"] .world-map:before,#app[data-screen="world"] .world-map:after{display:none}
+#app[data-screen="world"] .world-grid-wrap{left:98px;top:124px;width:616px;height:492px;padding:0;border-radius:0;background:transparent;box-shadow:none;z-index:8}
+#app[data-screen="world"] .invisible-world-grid{grid-template-columns:repeat(8,72px);grid-auto-rows:57px;gap:5px;background:transparent}
+#app[data-screen="world"] .invisible-world-grid .tile{height:57px;background:transparent!important;box-shadow:none!important;border:0!important}
+#app[data-screen="world"] .world-grid-wrap.place-mode .tile.empty,#app[data-screen="world"] .world-grid-wrap.erase-mode .tile.filled{outline:none!important}
+#app[data-screen="world"] .world-grid-wrap .tile:active{transform:scale(.96)}
+#app[data-screen="world"] .world-grid-wrap .tile.empty:active{background:rgba(255,255,255,.06)!important;border-radius:14px}
+#app[data-screen="world"] .item-house .decor-svg{width:90px;height:82px;transform:translateY(-16px)}
+#app[data-screen="world"] .item-tree .decor-svg{width:74px;height:82px;transform:translateY(-14px)}
+#app[data-screen="world"] .item-flowers .decor-svg{width:52px;height:58px;transform:translateY(-2px)}
+#app[data-screen="world"] .item-pool .decor-svg{width:96px;height:69px;transform:translateY(2px)}
+#app[data-screen="world"] .item-slide .decor-svg{width:84px;height:74px;transform:translateY(-8px)}
 #app[data-screen="world"] .world-critters{position:absolute;inset:0;z-index:9;pointer-events:none}
-#app[data-screen="world"] .world-critter{position:absolute;left:0;top:0;width:46px;height:46px;transform:translate(0,0);will-change:transform}
-#app[data-screen="world"] .world-critter img{width:42px;height:42px;display:block;object-fit:contain;filter:drop-shadow(0 4px 3px #00000022);animation:worldCritterBounce .9s ease-in-out infinite}
+#app[data-screen="world"] .world-critter{position:absolute;left:0;top:0;width:56px;height:56px;will-change:transform}
+#app[data-screen="world"] .world-critter img{width:50px;height:50px;display:block;object-fit:contain;filter:drop-shadow(0 5px 3px #00000028);animation:worldCritterBounce .9s ease-in-out infinite}
 #app[data-screen="world"] .world-critter:nth-child(2n) img{animation-delay:.18s}
 #app[data-screen="world"] .world-critter:nth-child(3n) img{animation-delay:.36s}
-#app[data-screen="world"] .world-critter-shadow{position:absolute;left:9px;right:9px;bottom:2px;height:10px;border-radius:50%;background:radial-gradient(ellipse at center,#00000033,transparent 72%)}
+#app[data-screen="world"] .world-critter-shadow{position:absolute;left:12px;right:12px;bottom:4px;height:11px;border-radius:50%;background:radial-gradient(ellipse at center,#00000030,transparent 72%)}
+#app[data-screen="world"] .world-buildtools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 14px 0;margin-bottom:132px}
+#app[data-screen="world"] .build-card{min-height:106px}
+#app[data-screen="world"] .world-footer{margin:0 14px 136px}
+#app[data-screen="world"] .world-pan-hint{margin:0 14px 12px}
+#app[data-screen="world"] .world-tip,#app[data-screen="world"] .world-status,#app[data-screen="world"] .world-viewbar,#app[data-screen="world"] .world-stats{margin-left:14px;margin-right:14px}
 @keyframes worldCritterBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media(max-width:360px){#app[data-screen="world"] .world-viewport{height:360px}#app[data-screen="world"] .world-buildtools{grid-template-columns:1fr 1fr}}
