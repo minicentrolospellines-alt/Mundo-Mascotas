@@ -8,14 +8,14 @@ def hasReleaseSigning = releaseKeystorePath && releaseStorePassword && releaseKe
 
 android {
     namespace 'cl.negociospyme.blockpets'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId 'cl.negociospyme.blockpets'
         minSdk 24
-        targetSdk 35
-        versionCode 4
-        versionName '1.6'
+        targetSdk 36
+        versionCode 5
+        versionName '1.7'
     }
 
     sourceSets {
